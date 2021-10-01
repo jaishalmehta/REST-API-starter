@@ -7,7 +7,7 @@ describe('GET requests', () => {
     
     test('GET product/read endpoint, expect 200', async () => {
         const res = await request(app).get('/product/read')
-        expect(res.statusCode).toBe(200);
+        expect(res.statusCode).toBe( 200);
     });
 
     test('GET bad endpoint, expect 404', async () => {
@@ -17,11 +17,22 @@ describe('GET requests', () => {
 
 });
 
+// TEST THE REST API ENDPOINT FOR POST
+describe('POST request', () => {
+    
+    test('CREATE product test', async () => {
+        const res = await request(app).post('/product/create')
+        expect(res.statusCode).toBe(201);
+    });
+
+});
+
 // TEST THE REST API ENDPOINT FOR PUT
 describe('CREATE request', () => {
     
     test('CREATE product test', async () => {
-	// TEST IN HERE
+        const res = await request(app).put('/product/update/:id')
+        expect(res.statusCode).toBe(202);
     });
 
 });
@@ -30,7 +41,7 @@ describe('CREATE request', () => {
 describe('Unit Tests', () => {
 
     test('product object builder', () => {
-        // TEST IN HERE
+        
     });
 
 });
