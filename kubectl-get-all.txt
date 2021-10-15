@@ -1,0 +1,18 @@
+NAME                          READY   STATUS             RESTARTS   AGE
+pod/node-2-5b7f7fcd86-8x2nv   0/1     CrashLoopBackOff   6          11m
+pod/node-589f6c6798-dpv4w     1/1     Running            0          12m
+pod/node-589f6c6798-n2r57     1/1     Running            0          12m
+pod/todo                      1/1     Running            0          46h
+
+NAME                 TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
+service/kubernetes   ClusterIP      10.99.240.1    <none>          443/TCP          3d3h
+service/node         ClusterIP      10.99.246.37   <none>          9000/TCP         57m
+service/todo         LoadBalancer   10.99.255.8    104.199.3.222   5000:31776/TCP   46h
+
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/node     2/2     2            2           12m
+deployment.apps/node-2   0/1     1            0           28m
+
+NAME                                DESIRED   CURRENT   READY   AGE
+replicaset.apps/node-2-5b7f7fcd86   1         1         0       28m
+replicaset.apps/node-589f6c6798     2         2         2       12m
