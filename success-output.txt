@@ -1,0 +1,143 @@
+Started by GitHub push by jaishalmehta
+Running as SYSTEM
+Building in workspace /home/jenkins/.jenkins/workspace/nodeapp
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /home/jenkins/.jenkins/workspace/nodeapp/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/jaishalmehta/REST-API-starter.git # timeout=10
+Fetching upstream changes from https://github.com/jaishalmehta/REST-API-starter.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.17.1'
+ > git fetch --tags --progress -- https://github.com/jaishalmehta/REST-API-starter.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 9bfd03b7ae36bc512ac50ceaeda77602e8d6c0b1 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9bfd03b7ae36bc512ac50ceaeda77602e8d6c0b1 # timeout=10
+Commit message: "Update package.json"
+ > git rev-list --no-walk 64885e019e558a1b5691e703cb6caca8fd3259ab # timeout=10
+[nodeapp] $ /bin/sh -xe /tmp/jenkins83165234312900074.sh
++ npm install
+npm WARN LBG-Proj@1.0.0 No repository field.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
+audited 496 packages in 3.509s
+
+41 packages are looking for funding
+  run `npm fund` for details
+
+found 3 high severity vulnerabilities
+  run `npm audit fix` to fix them, or `npm audit` for details
++ npm test
+
+> LBG-Proj@1.0.0 test /home/jenkins/.jenkins/workspace/nodeapp
+> jest --coverage --passWithNoTests
+
+PASS ./app.test.js
+  GET requests
+    ✓ GET product/read endpoint, expect 200 (90 ms)
+    ✓ GET bad endpoint, expect 404 (8 ms)
+  CREATE request
+    ✓ CREATE product test (9 ms)
+  Unit Tests
+    ✓ product object builder
+
+  console.log
+    
+    READ (all)
+
+      at app.js:57:5
+
+  console.log
+    Reading all products:
+
+      at app.js:69:9
+
+  console.log
+    []
+
+      at app.js:70:9
+
+  console.log
+    
+    UPDATE
+
+      at app.js:106:5
+
+  console.log
+    Updated product by id:  :id
+
+      at app.js:130:9
+
+  console.log
+    {
+      _id: ':id',
+      name: undefined,
+      description: undefined,
+      price: undefined
+    }
+
+      at app.js:131:9
+
+----------|---------|----------|---------|---------|---------------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s         
+----------|---------|----------|---------|---------|---------------------------
+All files |   52.63 |       20 |   36.36 |   57.69 |                           
+ app.js   |   52.63 |       20 |   36.36 |   57.69 | 18-24,31-47,80-96,141-156 
+----------|---------|----------|---------|---------|---------------------------
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        0.729 s, estimated 1 s
+Ran all test suites.
++ npm build
++ docker build -t gcr.io/training-325404/rest_api_image_jaishal:v18 .
+Sending build context to Docker daemon  40.69MB
+
+Step 1/5 : FROM node:14-alpine
+ ---> fe39f43f1d22
+Step 2/5 : COPY . .
+ ---> 808f38c49240
+Step 3/5 : RUN npm install
+ ---> Running in 105eae1c932f
+[91mnpm WARN LBG-Proj@1.0.0 No repository field.
+[0m[91mnpm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules/fsevents):
+[0m[91mnpm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+[0m[91m
+[0maudited 496 packages in 4.209s
+
+41 packages are looking for funding
+  run `npm fund` for details
+
+found 3 high severity vulnerabilities
+  run `npm audit fix` to fix them, or `npm audit` for details
+Removing intermediate container 105eae1c932f
+ ---> ce8997a287d0
+Step 4/5 : EXPOSE 9000
+ ---> Running in 0a0d855868d3
+Removing intermediate container 0a0d855868d3
+ ---> 9ce9996a51ca
+Step 5/5 : ENTRYPOINT ["npm", "start"]
+ ---> Running in f0a51acceaf4
+Removing intermediate container f0a51acceaf4
+ ---> e90e4f1221b4
+Successfully built e90e4f1221b4
+Successfully tagged gcr.io/training-325404/rest_api_image_jaishal:v18
++ docker push gcr.io/training-325404/rest_api_image_jaishal:v18
+The push refers to repository [gcr.io/training-325404/rest_api_image_jaishal]
+e24197bf0f9b: Preparing
+0dbc0c83ff47: Preparing
+20e664c3d99e: Preparing
+b3031b5001d5: Preparing
+a303372b2caa: Preparing
+39982b2a789a: Preparing
+39982b2a789a: Waiting
+20e664c3d99e: Layer already exists
+b3031b5001d5: Layer already exists
+a303372b2caa: Layer already exists
+39982b2a789a: Layer already exists
+e24197bf0f9b: Pushed
+0dbc0c83ff47: Pushed
+v18: digest: sha256:c80ec540d61a90e59b08c82f3fd565f598ed764a80e0bbe2ce603943eb1a87f4 size: 1578
+Finished: SUCCESS
