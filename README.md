@@ -19,6 +19,3 @@ API Listening on http://localhost:8080
 Stop the application: 
 
 CTRL + C
-
-Testing webhooks
-Testing webhooks
